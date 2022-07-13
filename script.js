@@ -117,14 +117,14 @@ const playerPlay = () => {
                winner.textContent = 'Draw';
            }
            popupWin.classList.add('popup_win_show');
+           //remove the event listener from the rock/paper/scissors buttons after someone reaches 5 points, otherwise triggering them will keep the score updating after the end of the round
+           selectBtn.removeEventListener('click', rpsSelection);
             }
         }
         //Clicking the start button will reset the score to 0 for both players
         startBtn.addEventListener('click', () => {
-            //removing the event listener from the rock/paper/scissors
-            //this is made in case if reseting the round with start button before the round is finished (finished means one of the players has 5 points) the score will be kept inside the function and will not reset
+            //also remove the event listener with the function when start button clicked
             selectBtn.removeEventListener('click', rpsSelection);
-            //reset the points for both players
             userPoints = 0;
             pcPoints = 0;
             playerScore.textContent = 0;
