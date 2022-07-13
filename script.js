@@ -12,7 +12,6 @@ const popupBtn = document.querySelector('.popup_btn');
 let playerGuess;
 let pcGuess;
 
-
 //random choise of PC 
 const computerPlay = () => {
     // added 3 + 1 because when multiplying by 3 without +1 the possible result includes 0
@@ -46,13 +45,8 @@ const computerPlay = () => {
         default:
             break;
     }
-
-    return pcGuess;
-    
+    return pcGuess;    
 };
-
-
-
 
 
 //The function triggers after the start button is clicked
@@ -108,9 +102,8 @@ const playerPlay = () => {
         }
         
         //showing the current round score for the user and pc
-        
-       playerScore.textContent = userPoints;
-       pcScore.textContent = pcPoints;
+        playerScore.textContent = userPoints;
+        pcScore.textContent = pcPoints;
     
        
        //after PC or user reach 5 points removing the event listener from the buttons
@@ -124,8 +117,6 @@ const playerPlay = () => {
                winner.textContent = 'Draw';
            }
            popupWin.classList.add('popup_win_show');
-           
-
             }
         }
         //Clicking the start button will reset the score to 0 for both players
@@ -143,16 +134,10 @@ const playerPlay = () => {
             userSel.textContent = '';
             });
     });    
-    
-    
 };
-
-
 
 //start button will make the buttons to trigger the function to start the round
 startBtn.addEventListener('click', playerPlay);
-
-
 
 //closing the popup window
 popupBtn.addEventListener('click', () => {
