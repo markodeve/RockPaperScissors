@@ -52,14 +52,19 @@ const computerPlay = () => {
 };
 
 
-let pcPoints = 0;
-let userPoints = 0;
+
+
 
 //The function triggers after the start button is clicked
 //after the start button is clicked the round starts when user clicks one of the choise buttons
 //after the user clicks one of the rock/paper/scissors button the PC automatically makes a choise
 //the round is finished when one of the players user or the pc reaches to 5 points
+
+
+let pcPoints = 0;
+let userPoints = 0;
 const playerPlay = () => {
+    
     
     selectBtn.addEventListener('click', function rpsSelection(e)  {
         
@@ -80,6 +85,7 @@ const playerPlay = () => {
         userSel.textContent = e.target.textContent;
         //assigning the computer play function to a variable to make it accesible
         let pcGuess2 = computerPlay();
+        
         
         //updating the score of PC or user depending on the winning combination
         if (pcGuess2 == 'rock' && playerGuess == 'paper') {
@@ -102,13 +108,14 @@ const playerPlay = () => {
         }
         
         //showing the current round score for the user and pc
+        
        playerScore.textContent = userPoints;
        pcScore.textContent = pcPoints;
     
+       
        //after PC or user reach 5 points removing the event listener from the buttons
        //after one of the players reaches 5 points show the popup window calling the winner
        if(userPoints >= 5 || pcPoints >= 5) {
-           selectBtn.removeEventListener('click', rpsSelection);
            if (userPoints > pcPoints) {
                winner.textContent = 'User wins';
            } else if (pcPoints > userPoints) {
@@ -117,32 +124,35 @@ const playerPlay = () => {
                winner.textContent = 'Draw';
            }
            popupWin.classList.add('popup_win_show');
+           
 
             }
         }
-    
+        //Clicking the start button will reset the score to 0 for both players
+        startBtn.addEventListener('click', () => {
+            //removing the event listener from the rock/paper/scissors
+            //this is made in case if reseting the round with start button before the round is finished (finished means one of the players has 5 points) the score will be kept inside the function and will not reset
+            selectBtn.removeEventListener('click', rpsSelection);
+            //reset the points for both players
+            userPoints = 0;
+            pcPoints = 0;
+            playerScore.textContent = 0;
+            pcScore.textContent = 0;
+            //remove the player and pc choise icons from the window
+            pcSel.textContent = '';
+            userSel.textContent = '';
+            });
     });    
-
+    
     
 };
 
 
-//Adding two event listeners to the start button
-//one to reset the score and reset the windows that show the icons played in previous round
-//the second event listener is to make the buttons triggerable to start the round
-
-//Clicking the start button will reset the score to 0 for both players
-startBtn.addEventListener('click', () => {
-userPoints = 0;
-pcPoints = 0;
-playerScore.textContent = userPoints;
-pcScore.textContent = pcPoints;
-pcSel.textContent = '';
-userSel.textContent = '';
-});
 
 //start button will make the buttons to trigger the function to start the round
 startBtn.addEventListener('click', playerPlay);
+
+
 
 //closing the popup window
 popupBtn.addEventListener('click', () => {
