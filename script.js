@@ -58,10 +58,10 @@ const computerPlay = () => {
 let pcPoints = 0;
 let userPoints = 0;
 const playerPlay = () => {
-    
+    let roundCounter = 0;
     
     selectBtn.addEventListener('click', function rpsSelection(e)  {
-        
+        roundCounter += 1;
         //the code below is wrapped in if to avoid the parent element of the 3 buttons to be accessible
         if (!e.target.classList.contains('bottom_cont')) {
             //selecting the rock/paper/scissors depending on the button clicked
@@ -106,9 +106,9 @@ const playerPlay = () => {
         pcScore.textContent = pcPoints;
     
        
-       //after PC or user reach 5 points removing the event listener from the buttons
-       //after one of the players reaches 5 points show the popup window calling the winner
-       if(userPoints >= 5 || pcPoints >= 5) {
+       //after 5 rounds played removing the event listener from the buttons
+       //after 5 rounds are played show the popup window calling the winner
+       if(roundCounter >= 5) {
            if (userPoints > pcPoints) {
                winner.textContent = 'User wins';
            } else if (pcPoints > userPoints) {
