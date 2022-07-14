@@ -34,7 +34,6 @@ const computerPlay = () => {
         default:
             break;
     }
-
     //show the corresponding icon in the PC choise window
     switch (pcGuess) {
         case 'rock':
@@ -51,7 +50,6 @@ const computerPlay = () => {
     }
     return pcGuess;    
 };
-
 
 //The function triggers after the start button is clicked
 //after the start button is clicked the round starts when user clicks one of the choise buttons

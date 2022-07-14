@@ -7,7 +7,7 @@
 
 .container-rps {
     margin: 0 auto;
-    width: 900px;
+    width: 70%;
     height: 600px;
     background-color: cornflowerblue;
     position: relative;
@@ -132,4 +132,14 @@
 
 .popup_win_show {
     display: block;
+}
+
+@media (max-width: 1225px) {
+    .start_text {
+        font-size: 12px;
+    }
+    .show_round {
+        font-size: 20px;
+        left: 28px;
+    }
 }
