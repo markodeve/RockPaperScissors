@@ -36,6 +36,7 @@
 }
 
 .bottom-bar-div {
+    border-radius: 5px;
     width: 100px;
     height: 100px;
     background-color: whitesmoke;
@@ -83,10 +84,11 @@
     transform: translateX(-50%);
     background-color: whitesmoke;
     width: 400px;
-    height: 300px;
+    height: 250px;
     padding-top: 30px;
     text-align: center;
-    display: none;
+    opacity: 0;
+    visibility: hidden;
     transition: all 0.5s;
 }
 
@@ -100,7 +102,12 @@
     width: 200px;
     background-color: violet;
     cursor: pointer;
+    font-size: 22px;
+    height: 50px;
+}
 
+.popup_btn:hover {
+    background-color: darkred;
 }
 
 .show_round {
@@ -120,7 +127,7 @@
 }
 
 .start_text {
-    display: none;
+    visibility: hidden;
     text-align: center;
     position: absolute;
     left: 50%;
@@ -131,7 +138,9 @@
 }
 
 .popup_win_show {
-    display: block;
+    transition: 0.5s all;
+    opacity: 1;
+    visibility: visible; 
 }
 
 @media (max-width: 1225px) {
