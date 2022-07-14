@@ -7,6 +7,10 @@ const userSel = document.querySelector('.player-select');
 const popupWin = document.querySelector('.popup_win');
 const winner = document.querySelector('.popup_winner');
 const popupBtn = document.querySelector('.popup_btn');
+const showRound = document.querySelector('.show_round');
+const userIcon = document.querySelector('.icon-user');
+const pcIcon = document.querySelector('.icon-pc');
+const startText = document.querySelector('.start_text');
 
 //variables for the selection for player or pc
 let playerGuess;
@@ -58,23 +62,30 @@ const computerPlay = () => {
 let pcPoints = 0;
 let userPoints = 0;
 const playerPlay = () => {
-    let roundCounter = 0;
+let roundCounter = 0;
     
-    selectBtn.addEventListener('click', function rpsSelection(e)  {
-        roundCounter += 1;
-        //the code below is wrapped in if to avoid the parent element of the 3 buttons to be accessible
+    
+selectBtn.addEventListener('click', function rpsSelection(e)  {
+        
+    
+    //the code below is wrapped in if to avoid the parent element of the 3 buttons to be accessible
         if (!e.target.classList.contains('bottom_cont')) {
+            //update the round counter
+            roundCounter += 1;
             //selecting the rock/paper/scissors depending on the button clicked
             if (e.target.classList.contains('rock')) {
                 playerGuess = 'rock';
+    
             } 
             if (e.target.classList.contains('paper')) {
                 playerGuess = 'paper';
+                
             } 
             if (e.target.classList.contains('scissors')) {
                 playerGuess = 'scissors';
+                
             } 
-
+            showRound.textContent = `round: ${roundCounter}`;
         //inserting the relevant icon to the user choise window
         userSel.textContent = e.target.textContent;
         //assigning the computer play function to a variable to make it accesible
@@ -82,23 +93,58 @@ const playerPlay = () => {
         
         
         //updating the score of PC or user depending on the winning combination
+        //also giving a green color to the winning user/pc icon for a moment using settimeout
         if (pcGuess2 == 'rock' && playerGuess == 'paper') {
             userPoints += 1;
+            userIcon.classList.add('winning_color');
+            setTimeout(() => {
+                userIcon.classList.remove('winning_color');
+            }, 100);
         }
         if (pcGuess2 == 'paper' && playerGuess == 'scissors') {
             userPoints += 1;
+            userIcon.classList.add('winning_color');
+            setTimeout(() => {
+                userIcon.classList.remove('winning_color');
+            }, 100);
         }
         if (pcGuess2 == 'scissors' && playerGuess == 'rock') {
             userPoints += 1;
+            userIcon.classList.add('winning_color');
+            setTimeout(() => {
+                userIcon.classList.remove('winning_color');
+            }, 100);
         }
         if (pcGuess2 == 'paper' && playerGuess == 'rock') {
             pcPoints += 1;
+            pcIcon.classList.add('winning_color');
+            setTimeout(() => {
+                pcIcon.classList.remove('winning_color');
+            }, 100);
         }
         if (pcGuess2 == 'scissors' && playerGuess == 'paper') {
             pcPoints += 1;
+            pcIcon.classList.add('winning_color');
+            setTimeout(() => {
+                pcIcon.classList.remove('winning_color');
+            }, 100);
         }
         if (pcGuess2 == 'rock' && playerGuess == 'scissors') {
             pcPoints += 1;
+            pcIcon.classList.add('winning_color');
+            setTimeout(() => {
+                pcIcon.classList.remove('winning_color');
+            }, 100);
+        }
+        if (pcGuess2 == playerGuess) {
+            pcIcon.classList.add('draw_color');
+            setTimeout(() => {
+                pcIcon.classList.remove('draw_color');
+            }, 100);
+            userIcon.classList.add('draw_color');
+            setTimeout(() => {
+                userIcon.classList.remove('draw_color');
+            }, 100);
         }
         
         //showing the current round score for the user and pc
@@ -111,16 +157,23 @@ const playerPlay = () => {
        if(roundCounter >= 5) {
            if (userPoints > pcPoints) {
                winner.textContent = 'User wins';
+               userIcon.classList.add('winning_color');
            } else if (pcPoints > userPoints) {
                winner.textContent = 'PC wins';
+               pcIcon.classList.add('winning_color');
            } else {
                winner.textContent = 'Draw';
+               pcIcon.classList.add('draw_color');
+               userIcon.classList.add('draw_color');
            }
            popupWin.classList.add('popup_win_show');
            //remove the event listener from the rock/paper/scissors buttons after someone reaches 5 points, otherwise triggering them will keep the score updating after the end of the round
            selectBtn.removeEventListener('click', rpsSelection);
+    
             }
+            startText.classList.remove('popup_win_show');
         }
+        
         //Clicking the start button will reset the score to 0 for both players
         startBtn.addEventListener('click', () => {
             //also remove the event listener with the function when start button clicked
@@ -132,14 +185,26 @@ const playerPlay = () => {
             //remove the player and pc choise icons from the window
             pcSel.textContent = '';
             userSel.textContent = '';
-            });
+            showRound.textContent = '';
+            pcIcon.classList.remove('winning_color');
+            userIcon.classList.remove('winning_color');
+            pcIcon.classList.remove('draw_color');
+            userIcon.classList.remove('draw_color');
+
+        });
     });    
 };
 
 //start button will make the buttons to trigger the function to start the round
-startBtn.addEventListener('click', playerPlay);
+startBtn.addEventListener('click', playerPlay,);
+
+//show the text above the start button indicating what to do to start the round
+startBtn.addEventListener('click', () => {
+    startText.classList.add('popup_win_show');
+});
 
 //closing the popup window
 popupBtn.addEventListener('click', () => {
     popupWin.classList.remove('popup_win_show');
+    showRound.textContent = '';
 });
