@@ -1,16 +1,16 @@
-const selectBtn = document.querySelector('.bottom_cont');
-const startBtn = document.querySelector('.start_round');
+const selectBtn = document.querySelector('.bottom-cont');
+const startBtn = document.querySelector('.start-round');
 const pcScore = document.querySelector('.pc-score');
 const playerScore = document.querySelector('.player-score');
 const pcSel = document.querySelector('.pc-select');
 const userSel = document.querySelector('.player-select');
-const popupWin = document.querySelector('.popup_win');
-const winner = document.querySelector('.popup_winner');
-const popupBtn = document.querySelector('.popup_btn');
-const showRound = document.querySelector('.show_round');
+const popupWin = document.querySelector('.popup-win');
+const winner = document.querySelector('.popup-winner');
+const popupBtn = document.querySelector('.popup-btn');
+const showRound = document.querySelector('.show-round');
 const userIcon = document.querySelector('.icon-user');
 const pcIcon = document.querySelector('.icon-pc');
-const startText = document.querySelector('.start_text');
+const startText = document.querySelector('.start-text');
 
 //variables for the selection for player or pc
 let playerGuess;
@@ -63,7 +63,7 @@ let roundCounter = 0;
     
 selectBtn.addEventListener('click', function rpsSelection(e)  {
     //the code below is wrapped in if to avoid the parent element of the 3 buttons to be accessible
-        if (!e.target.classList.contains('bottom_cont')) {
+        if (!e.target.classList.contains('bottom-cont')) {
             //update the round counter
             roundCounter += 1;
             //selecting the rock/paper/scissors depending on the button clicked
@@ -86,54 +86,54 @@ selectBtn.addEventListener('click', function rpsSelection(e)  {
         //also giving a green color to the winning user/pc icon for a moment using settimeout
         if (pcGuess2 == 'rock' && playerGuess == 'paper') {
             userPoints += 1;
-            userIcon.classList.add('winning_color');
+            userIcon.classList.add('winning-color');
             setTimeout(() => {
-                userIcon.classList.remove('winning_color');
+                userIcon.classList.remove('winning-color');
             }, 100);
         }
         if (pcGuess2 == 'paper' && playerGuess == 'scissors') {
             userPoints += 1;
-            userIcon.classList.add('winning_color');
+            userIcon.classList.add('winning-color');
             setTimeout(() => {
-                userIcon.classList.remove('winning_color');
+                userIcon.classList.remove('winning-color');
             }, 100);
         }
         if (pcGuess2 == 'scissors' && playerGuess == 'rock') {
             userPoints += 1;
-            userIcon.classList.add('winning_color');
+            userIcon.classList.add('winning-color');
             setTimeout(() => {
-                userIcon.classList.remove('winning_color');
+                userIcon.classList.remove('winning-color');
             }, 100);
         }
         if (pcGuess2 == 'paper' && playerGuess == 'rock') {
             pcPoints += 1;
-            pcIcon.classList.add('winning_color');
+            pcIcon.classList.add('winning-color');
             setTimeout(() => {
-                pcIcon.classList.remove('winning_color');
+                pcIcon.classList.remove('winning-color');
             }, 100);
         }
         if (pcGuess2 == 'scissors' && playerGuess == 'paper') {
             pcPoints += 1;
-            pcIcon.classList.add('winning_color');
+            pcIcon.classList.add('winning-color');
             setTimeout(() => {
-                pcIcon.classList.remove('winning_color');
+                pcIcon.classList.remove('winning-color');
             }, 100);
         }
         if (pcGuess2 == 'rock' && playerGuess == 'scissors') {
             pcPoints += 1;
-            pcIcon.classList.add('winning_color');
+            pcIcon.classList.add('winning-color');
             setTimeout(() => {
-                pcIcon.classList.remove('winning_color');
+                pcIcon.classList.remove('winning-color');
             }, 100);
         }
         if (pcGuess2 == playerGuess) {
-            pcIcon.classList.add('draw_color');
+            pcIcon.classList.add('draw-color');
             setTimeout(() => {
-                pcIcon.classList.remove('draw_color');
+                pcIcon.classList.remove('draw-color');
             }, 100);
-            userIcon.classList.add('draw_color');
+            userIcon.classList.add('draw-color');
             setTimeout(() => {
-                userIcon.classList.remove('draw_color');
+                userIcon.classList.remove('draw-color');
             }, 100);
         }
         //showing the current round score for the user and pc
@@ -144,21 +144,21 @@ selectBtn.addEventListener('click', function rpsSelection(e)  {
        if(roundCounter >= 5) {
            if (userPoints > pcPoints) {
                winner.textContent = 'User wins';
-               userIcon.classList.add('winning_color');
+               userIcon.classList.add('winning-color');
            } else if (pcPoints > userPoints) {
                winner.textContent = 'PC wins';
-               pcIcon.classList.add('winning_color');
+               pcIcon.classList.add('winning-color');
            } else {
                winner.textContent = 'Draw';
-               pcIcon.classList.add('draw_color');
-               userIcon.classList.add('draw_color');
+               pcIcon.classList.add('draw-color');
+               userIcon.classList.add('draw-color');
            }
-           popupWin.classList.add('popup_win_show');
+           popupWin.classList.add('popup-win-show');
            //remove the event listener from the rock/paper/scissors buttons after someone reaches 5 points, otherwise triggering them will keep the score updating after the end of the round
            selectBtn.removeEventListener('click', rpsSelection);
     
             }
-            startText.classList.remove('popup_win_show');
+            startText.classList.remove('popup-win-show');
         }
         //Clicking the start button will reset the score to 0 for both players
         startBtn.addEventListener('click', () => {
@@ -172,10 +172,10 @@ selectBtn.addEventListener('click', function rpsSelection(e)  {
             pcSel.textContent = '';
             userSel.textContent = '';
             showRound.textContent = '';
-            pcIcon.classList.remove('winning_color');
-            userIcon.classList.remove('winning_color');
-            pcIcon.classList.remove('draw_color');
-            userIcon.classList.remove('draw_color');
+            pcIcon.classList.remove('winning-color');
+            userIcon.classList.remove('winning-color');
+            pcIcon.classList.remove('draw-color');
+            userIcon.classList.remove('draw-color');
         });
     });    
 };
@@ -184,10 +184,10 @@ selectBtn.addEventListener('click', function rpsSelection(e)  {
 startBtn.addEventListener('click', playerPlay,);
 //show the text above the start button indicating what to do to start the round
 startBtn.addEventListener('click', () => {
-    startText.classList.add('popup_win_show');
+    startText.classList.add('popup-win-show');
 });
 //closing the popup window
 popupBtn.addEventListener('click', () => {
-    popupWin.classList.remove('popup_win_show');
+    popupWin.classList.remove('popup-win-show');
     showRound.textContent = '';
 });

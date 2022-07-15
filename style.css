@@ -13,7 +13,7 @@
     position: relative;
 }
 
-.top_cont {
+.top-cont {
     display: flex;
     justify-content: space-between;
 }
@@ -28,7 +28,7 @@
     justify-content: center;
 }
 
-.bottom_cont {
+.bottom-cont {
     display: flex;
     justify-content: space-evenly;
     margin: 50px auto 0 auto;
@@ -63,7 +63,7 @@
     justify-content: center;
 }
 
-.start_round {
+.start-round {
     width: 190px;
     margin: 60px auto;
     display: block;
@@ -73,11 +73,11 @@
     cursor: pointer;
 }
 
-.start_round:hover {
+.start-round:hover {
     background-color: blue;
 }
 
-.popup_win {
+.popup-win {
     position: fixed;
     top: 20%;
     left: 50%;
@@ -92,12 +92,12 @@
     transition: all 0.5s;
 }
 
-.popup_winner {
+.popup-winner {
     font-size: 25px;
     margin-top: 30px;
 }
 
-.popup_btn {
+.popup-btn {
     margin-top: 30px;
     width: 200px;
     background-color: violet;
@@ -106,11 +106,11 @@
     height: 50px;
 }
 
-.popup_btn:hover {
+.popup-btn:hover {
     background-color: darkred;
 }
 
-.show_round {
+.show-round {
     position: absolute;
     left: 90px;
     top: 180px;
@@ -118,15 +118,15 @@
     color: rgb(0, 39, 63);
 }
 
-.winning_color {
+.winning-color {
     background-color: limegreen;
 }
 
-.draw_color {
+.draw-color {
     background-color: rgb(59, 102, 182);
 }
 
-.start_text {
+.start-text {
     visibility: hidden;
     text-align: center;
     position: absolute;
@@ -137,17 +137,17 @@
     font-size: 23px;
 }
 
-.popup_win_show {
+.popup-win-show {
     transition: 0.5s all;
     opacity: 1;
     visibility: visible; 
 }
 
 @media (max-width: 1225px) {
-    .start_text {
+    .start-text {
         font-size: 12px;
     }
-    .show_round {
+    .show-round {
         font-size: 20px;
         left: 28px;
     }
