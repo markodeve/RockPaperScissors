@@ -57,11 +57,11 @@ const computerPlay = () => {
 //the round is finished when one of the players user or the pc reaches to 5 points
 let pcPoints = 0;
 let userPoints = 0;
+
 const playerPlay = () => {
-let roundCounter = 0;
+    let roundCounter = 0;
     
-    
-selectBtn.addEventListener('click', function rpsSelection(e)  {
+    selectBtn.addEventListener('click', function rpsSelection(e)  {
     //the code below is wrapped in if to avoid the parent element of the 3 buttons to be accessible
         if (!e.target.classList.contains('bottom-cont')) {
             //update the round counter
